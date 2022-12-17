@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading.Tasks;
 
-namespace HomeWork.Api.Entities;
+namespace HomeWork.Data.Entities;
 
 public class TaskEntity
 {

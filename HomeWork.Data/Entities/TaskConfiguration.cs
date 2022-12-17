@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HomeWork.Api.Entities;
+namespace HomeWork.Data.Entities;
 
 public class TaskConfiguration
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HomeWork.Api.Entities;
+namespace HomeWork.Data.Entities;
 
 public class UserCourse
 {

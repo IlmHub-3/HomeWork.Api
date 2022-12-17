@@ -1,4 +1,4 @@
-﻿namespace HomeWork.Api.Entities;
+﻿namespace HomeWork.Data.Entities;
 
 public enum ETaskStatus
 {

@@ -1,5 +1,6 @@
-using HomeWork.Api.Data;
-using HomeWork.Api.Entities;
+using HomeWork.BLL;
+using HomeWork.Data.Data;
+using HomeWork.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -21,8 +24,7 @@ builder.Services.AddIdentity<User, Role>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
     options.Password.RequiredLength = 6;
-})
-    .AddEntityFrameworkStores<AppDbContext>();
+}).AddEntityFrameworkStores<AppDbContext>();
 
 var app = builder.Build();
 
