@@ -2,7 +2,7 @@
 
 namespace HomeWork.BLL;
 
-public interface IAccountService
+public interface IUsersService
 {
     Task SignUpAsync(RegisterUserDto registerUserDto);
     Task SignInAsync(LoginUserDto loginUserDto);
