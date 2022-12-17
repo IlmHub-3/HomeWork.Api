@@ -1,4 +1,5 @@
 ﻿using HomeWork.BLL;
+using HomeWork.BLL.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWork.Api.Controllers;
@@ -7,10 +8,21 @@ namespace HomeWork.Api.Controllers;
 [ApiController]
 public class AccountController : ControllerBase
 {
-    private readonly IAccountService _accountService;
+    private readonly IUsersService _usersService;
 
-    public AccountController(IAccountService accountService)
+    public AccountController(IUsersService usersService)
     {
-        _accountService = accountService;
+        _usersService = usersService;
+    }
+
+    [HttpPost("signup")]
+    public async Task<IActionResult> SignUp([FromBody] RegisterUserDto registerUserDto)
+    {
+        if(!ModelState.IsValid)
+            return BadRequest();
+        
+        await _usersService.SignUpAsync(registerUserDto);
+
+        return Ok();
     }
 }
