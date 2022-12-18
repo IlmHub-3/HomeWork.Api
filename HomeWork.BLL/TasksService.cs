@@ -1,7 +1,7 @@
 ﻿using HomeWork.BLL.Dtos;
+using HomeWork.BLL.Exceptions;
 using HomeWork.BLL.Interfaces;
 using HomeWork.BLL.ViewModels;
-using HomeWork.Common.Exceptions;
 using HomeWork.Data.Entities;
 using HomeWork.Data.Repositories;
 using Mapster;

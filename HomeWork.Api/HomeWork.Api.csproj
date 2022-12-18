@@ -12,9 +12,8 @@
 		</PackageReference>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 	</ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HomeWork.BLL\HomeWork.BLL.csproj" />
-    <ProjectReference Include="..\HomeWork.Data\HomeWork.Data.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\HomeWork.BLL\HomeWork.BLL.csproj" />
+	</ItemGroup>
 
 </Project>
