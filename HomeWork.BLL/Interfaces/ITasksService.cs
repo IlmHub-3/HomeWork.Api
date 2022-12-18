@@ -8,5 +8,5 @@ public interface ITasksService
     Task<TaskViewModel> GetTaskByIdAsync(Guid taskId);
     Task DeleteTaskAsync(Guid taskId);
     Task AddTaskAsync(CreateTaskDto createTaskDto);
-    Task UpdateTaskAsync(Guid taskId);  
+    Task UpdateTaskAsync(Guid taskId,UpdateTaskDto updateTaskDto);  
 }
