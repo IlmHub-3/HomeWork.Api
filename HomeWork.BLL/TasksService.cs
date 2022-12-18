@@ -1,6 +1,7 @@
 ﻿using HomeWork.BLL.Dtos;
 using HomeWork.BLL.Interfaces;
 using HomeWork.BLL.ViewModels;
+using HomeWork.Common.Exceptions;
 using HomeWork.Data.Entities;
 using HomeWork.Data.Repositories;
 using Mapster;
@@ -27,7 +28,7 @@ public class TasksService : ITasksService
         var task = await _unitOfWork.Tasks.GetAll().FirstOrDefaultAsync(task => task.Id == taskId);
 
         if (task is null)
-            throw new();
+            throw new NotFoundException<TaskEntity>();
 
         await _unitOfWork.Tasks.Remove(task);
     }
@@ -42,7 +43,7 @@ public class TasksService : ITasksService
         var task = await _unitOfWork.Tasks.GetAll().FirstOrDefaultAsync(t => t.Id == taskId);
 
         if (task is null)
-            throw new();
+            throw new NotFoundException<TaskEntity>();
 
         return task.Adapt<TaskViewModel>();
     }
@@ -52,7 +53,7 @@ public class TasksService : ITasksService
         var task = _unitOfWork.Tasks.GetAll().FirstOrDefault(t => t.Id == taskId);
 
         if (task is null)
-            throw new();
+            throw new NotFoundException<TaskEntity>();
 
         task.Title = updateTaskDto.Title;
         task.Description = updateTaskDto.Description;
