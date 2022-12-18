@@ -6,4 +6,7 @@ namespace HomeWork.Api.Controllers;
 [ApiController]
 public class TeachersController : ControllerBase
 {
+    [HttpGet]
+    [ProducesResponseType(typeof())]
+    public Task<List<>>
 }
