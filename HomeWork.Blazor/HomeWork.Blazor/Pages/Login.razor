@@ -4,8 +4,8 @@
 
 <MudText Typo="Typo.h3" GutterBottom="true">Sign In</MudText>
 
-<MudTextField @bind-Value="TextValue" Label="Gmail" Variant="Variant.Outlined" Style="width: 30%" />
-<MudTextField @bind-Value="Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password" Style="width: 30%" />
+<MudTextField @bind-Value="TextValue" Label="User Name" Variant="Variant.Filled" Margin="Margin.Dense" Style="width: 30%; background-color: white;" />
+<MudTextField @bind-Value="Password" Label="Password" Variant="Variant.Filled" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password" Style="width: 30%; background-color: white;" />
 <MudButton Color="Color.Primary" Variant="Variant.Filled" Style="margin-top: 10px">Submit</MudButton>
 
 @code {
