@@ -7,7 +7,8 @@ using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace HomeWork.BLL;
-public class TasksService : ITasksService
+
+public class TasksService : ITaskService
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -36,9 +37,7 @@ public class TasksService : ITasksService
         return (await _unitOfWork.Tasks.GetAll().ToListAsync()).Adapt<List<TaskViewModel>>();
     }
 
-    public async Task<TaskViewModel> GetTaskByIdAsync(Guid taskId)
     {
-        var task = await _unitOfWork.Tasks.GetAll().FirstOrDefaultAsync(task => task.Id == taskId);
 
         if (task is null)
             throw new();
@@ -46,12 +45,14 @@ public class TasksService : ITasksService
         return task.Adapt<TaskViewModel>();
     }
 
-    public async Task UpdateTaskAsync(Guid taskId)
     {
-        var task = _unitOfWork.Tasks.GetAll().FirstOrDefault(task => task.Id == taskId);
 
         if (task is null)
             throw new();
+
+        task.Title = updateTaskDto.Title;   
+        task.Description = updateTaskDto.Description;
+        task.Status = updateTaskDto.Status!.Value;
 
         await _unitOfWork.Tasks.Update(task);
     }
