@@ -1,5 +1,4 @@
-﻿using HomeWork.BLL;
-using HomeWork.BLL.Dtos;
+﻿using HomeWork.BLL.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWork.BLL.Controllers;
@@ -18,9 +17,9 @@ public class AccountController : ControllerBase
     [HttpPost("signup")]
     public async Task<IActionResult> SignUp([FromBody] RegisterUserDto registerUserDto)
     {
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
             return BadRequest();
-        
+
         await _usersService.SignUpAsync(registerUserDto);
 
         return Ok();
