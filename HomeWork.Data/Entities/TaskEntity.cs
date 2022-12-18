@@ -16,7 +16,7 @@ public class TaskEntity
     public string? Description { get; set; }
     public Guid GroupId { get; set; }
     [ForeignKey(nameof(GroupId))]
-    public virtual Group? Course { get; set; }
+    public virtual Group? Group { get; set; }
 
     public virtual List<UserTask>? UserTasks { get; set; }
     public virtual List<TaskComment>? Comments { get; set; }
