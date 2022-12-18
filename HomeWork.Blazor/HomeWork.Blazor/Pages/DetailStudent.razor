@@ -1,10 +1,10 @@
-﻿@page "/student-schedule"
+﻿@page "/detail-student"
 @inject HttpClient Http
 @using HomeWork.Blazor.Shared
 
-<PageTitle>Schedule</PageTitle>
+<PageTitle>Student</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Homework Schedule</MudText>
+<MudText Typo="Typo.h3" GutterBottom="true">Homework Detail Page</MudText>
 @if (schedules == null)
 {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
@@ -19,7 +19,16 @@ else
         <RowTemplate>
             <div class="schedules">
                 <MudText DataLabel="Summary">@context.Task</MudText>
-                <MudText DataLabel="Date">@context.Date</MudText>
+                <div class="detailPage">
+                    <MudText DataLabel="Summary">@context.Description</MudText>
+                    <MudText DataLabel="Date">@context.Date</MudText>
+                </div>
+                <MudTextField T="string" Label="Multiline" Variant="Variant.Text" Lines="2" Style="width:100%; margin-top: 10px; margin-bottom: 10px" />
+                <div class="studentFiles">
+                    <div class="files">
+                        <input type="file" class="btn" id="myFile" name="filename">
+                    </div>
+                </div>
             </div>
             
         </RowTemplate>
@@ -31,17 +40,23 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        schedules = await Http.GetFromJsonAsync<Schedules[]>("sample-data/schedule.json");
+        schedules = await Http.GetFromJsonAsync<Schedules[]>("sample-data/detail.json");
     }
     public class Schedules
     {
         public DateTime Date { get; set; }
+
+        public string? Description { get; set; }
 
         public string? Task { get; set; }
     }
 }
 
 <style>
+    .detailPage {
+        display: flex;
+        justify-content: space-between;
+    }
     .schedules {
         padding: 10px 20px;
         margin: 10px 1px;
