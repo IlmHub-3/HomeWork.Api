@@ -8,6 +8,6 @@ public interface IGroupsService
     Task AddGroupAsync(CreateGroupDto createGroupDto);
     Task<List<GroupViewModel>> GetGroupsAsync();
     Task<GroupViewModel> GetGroupByIdAsync(Guid groupId);
-    Task UpdateGroupAsync(Guid groupId);
+    Task UpdateGroupAsync(Guid groupId,UpdateGroupDto updateGroupDto);
     Task DeletGroupAsync(Guid groupId);
 }

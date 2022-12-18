@@ -49,12 +49,14 @@ public class GroupsService : IGroupsService
         return (await _unitOfWork.Groups.GetAll().ToListAsync()).Adapt<List<GroupViewModel>>();
     }
 
-    public async Task UpdateGroupAsync(Guid groupId)
+    public async Task UpdateGroupAsync(Guid groupId,UpdateGroupDto updateGroupDto)
     {
         var group = _unitOfWork.Groups.GetById(groupId);
 
         if (group == null)
             throw new();
+
+        group.Name = updateGroupDto.Name;
         
        await _unitOfWork.Groups.Update(group);
     }
