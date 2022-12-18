@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HomeWork.BLL.Dtos;
+using HomeWork.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWork.Api.Controllers;
@@ -6,5 +7,28 @@ namespace HomeWork.Api.Controllers;
 [ApiController]
 public class StudentsController : ControllerBase
 {
+    [HttpGet]
+    [ProducesResponseType(typeof(List<TaskViewModel>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllTasksAsync([FromQuery] TaskFilterDto filterDto)
+    {
+        return Ok();
+    }
 
+    [HttpGet("taskId:Guid")]
+    public async Task<IActionResult> GetTaskById(Guid taskId)
+    {
+        return Ok();
+    }
+
+    [HttpPut("taskId:Guid")]
+    public async Task<IActionResult> UpdateTask(Guid taskId, UpdateTaskDto updateTaskDto)
+    {
+        return Ok();
+    }
+
+    [HttpDelete("taskId:Guid")]
+    public async Task<IActionResult> DeleteTask(Guid taskId)
+    {
+        return Ok();
+    }
 }
