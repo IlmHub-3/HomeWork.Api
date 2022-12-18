@@ -10,9 +10,9 @@ public class UserGroup
     [ForeignKey(nameof(UserId))]
     public virtual User? User { get; set; }
 
-    public Guid CourseId { get; set; }
-    [ForeignKey(nameof(CourseId))]
-    public virtual Group? Course { get; set; }
+    public Guid GroupId { get; set; }
+    [ForeignKey(nameof(GroupId))]
+    public virtual Group? Group { get; set; }
 
     public bool IsAdmin { get; set; }
 }
