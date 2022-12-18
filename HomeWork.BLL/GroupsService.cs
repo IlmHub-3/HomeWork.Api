@@ -20,9 +20,7 @@ public class GroupsService : IGroupsService
 
     public async Task AddGroupAsync(CreateGroupDto createGroupDto)
     {
-        var group =  _unitOfWork.Groups.AddAsync(createGroupDto.Adapt<Group>());
-
-
+        await _unitOfWork.Groups.AddAsync(createGroupDto.Adapt<Group>());
     }
 
     public async Task DeletGroupAsync(Guid groupId)
