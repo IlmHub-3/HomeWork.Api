@@ -19,7 +19,4 @@
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HomeWork.BLL\HomeWork.BLL.csproj" />
-  </ItemGroup>
 </Project>
