@@ -1,4 +1,5 @@
-﻿using HomeWork.Api.ViewModel;
+﻿using HomeWork.BLL.Dtos;
+using HomeWork.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWork.Api.Controllers;
@@ -6,12 +7,37 @@ namespace HomeWork.Api.Controllers;
 [ApiController]
 public class AdminController : ControllerBase
 {
-    [HttpGet]
-    [ProducesResponseType(typeof(List<UserView>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetCategories([FromQuery] PaginationParams paginationParams)
-    {
-        var categories = await _categoriesService.GetCategoriesAsync(paginationParams);
 
-        return Ok(categories);
+    [HttpGet]
+    [ProducesResponseType(typeof(List<UserViewModel>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllUsersAsync([FromQuery] UsersFilterDto filterDto)
+    {
+        return Ok();
+    }
+
+    [HttpGet("{groupId:Guid}")]
+    [ProducesResponseType(typeof(GroupViewModel), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetCategoryById(Guid groupId)
+    {
+        return Ok();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateCategory(CreateGroupDto groupDto)
+    {
+        return Ok();
+    }
+
+    [HttpPut("{groupId:Guid}")]
+    public async Task<IActionResult> UpdateCategory(Guid groupId, UpdateGroupDto updateGroupDto)
+    {
+        return Ok();
+    }
+
+    [HttpDelete("{groupId:Guid}")]
+    public async Task<IActionResult> DeleteCategory(Guid groupId)
+    {
+        return Ok();
     }
 }
+

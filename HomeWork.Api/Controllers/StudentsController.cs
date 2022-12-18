@@ -6,4 +6,5 @@ namespace HomeWork.Api.Controllers;
 [ApiController]
 public class StudentsController : ControllerBase
 {
+
 }
