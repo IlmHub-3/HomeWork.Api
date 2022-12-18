@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeWork.BLL;
 
-public class TasksService : ITaskService
+public class TasksService : ITasksService
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -37,7 +37,9 @@ public class TasksService : ITaskService
         return (await _unitOfWork.Tasks.GetAll().ToListAsync()).Adapt<List<TaskViewModel>>();
     }
 
+    public async Task<TaskViewModel> GetTaskByIdAsync(Guid taskId)
     {
+        var task = await _unitOfWork.Tasks.GetAll().FirstOrDefaultAsync(t => t.Id == taskId);
 
         if (task is null)
             throw new();
@@ -45,12 +47,14 @@ public class TasksService : ITaskService
         return task.Adapt<TaskViewModel>();
     }
 
+    public async Task UpdateTaskAsync(Guid taskId, UpdateTaskDto updateTaskDto)
     {
+        var task = _unitOfWork.Tasks.GetAll().FirstOrDefault(t => t.Id == taskId);
 
         if (task is null)
             throw new();
 
-        task.Title = updateTaskDto.Title;   
+        task.Title = updateTaskDto.Title;
         task.Description = updateTaskDto.Description;
         task.Status = updateTaskDto.Status!.Value;
 
