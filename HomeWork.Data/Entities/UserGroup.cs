@@ -2,7 +2,7 @@
 
 namespace HomeWork.Data.Entities;
 
-public class UserCourse
+public class UserGroup
 {
     public Guid Id { get; set; }
 
@@ -12,7 +12,7 @@ public class UserCourse
 
     public Guid CourseId { get; set; }
     [ForeignKey(nameof(CourseId))]
-    public virtual Course? Course { get; set; }
+    public virtual Group? Course { get; set; }
 
     public bool IsAdmin { get; set; }
 }

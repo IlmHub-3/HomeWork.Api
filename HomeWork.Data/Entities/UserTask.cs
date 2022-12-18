@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using HomeWork.Data.Entities.Enum;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeWork.Data.Entities;
 
