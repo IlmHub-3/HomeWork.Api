@@ -2,6 +2,7 @@ using HomeWork.BLL;
 using HomeWork.Data.Data;
 using HomeWork.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUsersService, UsersService>();
 
-builder.Services.AddScoped<IAccountService, AccountService>();
+//builder.Services.AddValidatorsFromAssembly(Assembly.GetAssembly(typeof(Program)));
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

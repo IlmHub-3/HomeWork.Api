@@ -1,4 +1,6 @@
-﻿using HomeWork.BLL;
+﻿using FluentValidation;
+using HomeWork.BLL;
+using HomeWork.BLL.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWork.Api.Controllers;
@@ -7,10 +9,32 @@ namespace HomeWork.Api.Controllers;
 [ApiController]
 public class AccountController : ControllerBase
 {
-    private readonly IAccountService _accountService;
+    private readonly IUsersService _accountService;
+    private readonly IValidator<RegisterUserDto> _validator;
 
-    public AccountController(IAccountService accountService)
+    public AccountController(IUsersService accountService, 
+        IValidator<RegisterUserDto> validator)
     {
         _accountService = accountService;
+        _validator = validator;
     }
+
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterUserDto registerUserDto)
+    {
+        var validateResult = _validator.Validate(registerUserDto);
+
+        if(!validateResult.IsValid)
+            return BadRequest();
+
+        await _accountService.RegisterAsync(registerUserDto);
+
+        return Ok();
+    }
+
+    /*[HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
+    {
+
+    }*/
 }
