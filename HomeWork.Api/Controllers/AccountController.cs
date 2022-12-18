@@ -25,4 +25,15 @@ public class AccountController : ControllerBase
 
         return Ok();
     }
+
+    [HttpPost("singin")]
+    public async Task<IActionResult> SignIn(LoginUserDto loginUserDto)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest();
+
+        await _usersService.SignInAsync(loginUserDto);
+
+        return Ok();
+    }
 }
