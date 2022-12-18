@@ -37,19 +37,15 @@ public class TasksService : ITaskService
         return (await _unitOfWork.Tasks.GetAll().ToListAsync()).Adapt<List<TaskViewModel>>();
     }
 
-    public async Task<TaskViewModel> GetTasksByIdAsync(Guid taskId)
     {
-        var task  = await _unitOfWork.Tasks.GetAll().FirstOrDefaultAsync(task => task.Id == taskId);
 
         if (task is null)
             throw new();
-        
+
         return task.Adapt<TaskViewModel>();
     }
 
-    public async Task UpdateTaskAsync(Guid taskId,UpdateTaskDto updateTaskDto)
     {
-        var task = _unitOfWork.Tasks.GetById(taskId);
 
         if (task is null)
             throw new();
