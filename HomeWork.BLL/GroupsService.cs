@@ -1,6 +1,8 @@
-﻿using HomeWork.BLL.Interfaces;
+﻿using HomeWork.BLL.Dtos;
+using HomeWork.BLL.Interfaces;
+using HomeWork.BLL.ViewModels;
+using HomeWork.Data.Entities;
 using HomeWork.Data.Repositories;
-using HomeWork.Data.ViewModels;
 using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,13 @@ public class GroupsService : IGroupsService
     public GroupsService(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
+    }
+
+    public async Task AddGroupAsync(CreateGroupDto createGroupDto)
+    {
+        var group =  _unitOfWork.Groups.AddAsync(createGroupDto.Adapt<Group>());
+
+
     }
 
     public async Task DeletGroupAsync(Guid groupId)

@@ -1,4 +1,4 @@
-﻿namespace HomeWork.Data.ViewModels;
+﻿namespace HomeWork.BLL.ViewModels;
 
 public class GroupViewModel
 {
