@@ -1,4 +1,4 @@
-﻿namespace HomeWork.Data.Entities;
+﻿namespace HomeWork.Data.Entities.Enum;
 
 public enum EUserTaskStatus
 {
