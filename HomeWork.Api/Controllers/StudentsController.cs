@@ -1,4 +1,5 @@
 ﻿using HomeWork.BLL.Dtos;
+using HomeWork.BLL.Interfaces;
 using HomeWork.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,28 +8,31 @@ namespace HomeWork.Api.Controllers;
 [ApiController]
 public class StudentsController : ControllerBase
 {
+    private readonly ITasksService _tasksService;
+    public StudentsController(ITasksService tasksService)
+    {
+        _tasksService = tasksService;
+    }
+
     [HttpGet]
     [ProducesResponseType(typeof(List<TaskViewModel>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllTasksAsync([FromQuery] TaskFilterDto filterDto)
+    public async Task<IActionResult> GetAllTasksAsync()
     {
-        return Ok();
+        var tasks = await _tasksService.GetAllTasksAsync();
+        return Ok(tasks);
     }
 
-    [HttpGet("taskId:Guid")]
+    [HttpGet("taskId:guid")]
     public async Task<IActionResult> GetTaskById(Guid taskId)
     {
-        return Ok();
+        var task = await _tasksService.GetTaskByIdAsync(taskId);
+        return Ok(task);
     }
 
-    [HttpPut("taskId:Guid")]
+    [HttpPut("taskId:guid")]
     public async Task<IActionResult> UpdateTask(Guid taskId, UpdateTaskDto updateTaskDto)
     {
-        return Ok();
-    }
-
-    [HttpDelete("taskId:Guid")]
-    public async Task<IActionResult> DeleteTask(Guid taskId)
-    {
+        await _tasksService.UpdateTaskAsync(taskId, updateTaskDto);
         return Ok();
     }
 }

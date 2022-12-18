@@ -14,7 +14,7 @@ builder.Services.AddScoped<IUsersService, UsersService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
        
 
@@ -27,6 +27,18 @@ builder.Services.AddIdentity<User, Role>(options =>
     options.Password.RequiredLength = 6;
 }).AddEntityFrameworkStores<AppDbContext>();
 
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("TeacherRights", policy => policy.RequireRole("Teacher"));
+});
+
+builder.Services.AddCors(options => {
+    options.AddPolicy("ForAll", cors => {
+        cors.AllowAnyHeader();
+        cors.AllowAnyMethod();
+        cors.AllowAnyOrigin();
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -35,7 +47,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseAuthentication();
+app.UseCors("ForAll");
 
 app.UseAuthorization();
 
