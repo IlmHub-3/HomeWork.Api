@@ -1,13 +1,11 @@
 ﻿using HomeWork.BLL.Dtos;
 using HomeWork.Data.Entities;
-using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HomeWork.BLL;
 
-[Scoped]
 public class UsersService : IUsersService
 {
     private readonly UserManager<User> _userManager;

@@ -1,5 +1,6 @@
 ﻿using HomeWork.BLL;
 using HomeWork.BLL.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWork.Api.Controllers;
@@ -15,6 +16,8 @@ public class AccountController : ControllerBase
         _usersService = usersService;
     }
 
+
+    [Authorize(Policy = "TacherRights")]
     [HttpPost("signup")]
     public async Task<IActionResult> SignUp([FromBody] RegisterUserDto registerUserDto)
     {
