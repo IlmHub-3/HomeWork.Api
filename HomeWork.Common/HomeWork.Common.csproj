@@ -16,9 +16,10 @@
     <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HomeWork.Data\HomeWork.Data.csproj" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <ProjectReference Include="..\HomeWork.BLL\HomeWork.BLL.csproj" />
   </ItemGroup>
 </Project>

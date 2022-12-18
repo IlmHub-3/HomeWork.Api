@@ -17,4 +17,8 @@
 	  <ProjectReference Include="..\HomeWork.Data\HomeWork.Data.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Dtos\" />
+	</ItemGroup>
+
 </Project>
