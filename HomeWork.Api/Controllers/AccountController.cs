@@ -2,7 +2,7 @@
 using HomeWork.BLL.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HomeWork.Api.Controllers;
+namespace HomeWork.BLL.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
